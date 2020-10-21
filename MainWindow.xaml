@@ -5,41 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pascu_Serban_Lab2"
         mc:Ignorable="d"
-        Title="Virtual Doughnuts Factory" Height="450" Width="800" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+        Title="Virtual Doughnuts Factory" Height="450" Width="800" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Loaded="frmMain_Loaded">
     <Grid>
-        <Label x:Name="lblTitle" Content="Doughnuts - Bake &amp; Sale" FontWeight="Bold" FontSize="24" Margin="254,51,236,49"/>
-        <GroupBox x:Name="gbRaised" Header="Raised" FontWeight="Bold" Margin="99,105,546,209" Grid.RowSpan="2">
-            <Canvas Margin="168,11,-168,-12">
-                <GroupBox x:Name="gbFilled" Header="Filled" Height="92" Width="100" FontWeight="Normal" Canvas.Left="434" Canvas.Top="142"/>
-            </Canvas>
-        </GroupBox>
-        <Label x:Name="lblGlazedRaised" Content="Glazed" Margin="99,124,624,10"/>
-        <TextBox x:Name="txtGlazedRaised" Text="0" TextWrapping="Wrap" IsReadOnly="True" Margin="181,132,568,10"/>
-        <Label x:Name="lblSugarRaised" Content="Sugar" Margin="99,5,662,243" Grid.Row="1"/>
-        <TextBox x:Name="txtLemonFilled" Text="0" TextWrapping="Wrap" Width="120" IsReadOnly="True" Margin="547,238,133,10" Grid.Row="1"/>
-        <Label x:Name="lblChocolateFilled" Content="Chocolate" Margin="571,10,157,184" Grid.Row="1"/>
-        <TextBox x:Name="txtChocolateFilled" Text="0" TextWrapping="Wrap" Width="120" IsReadOnly="True" Margin="547,162,133,80" Grid.Row="1"/>
-        <Label x:Name="lblVanillaFilled" Content="Vanilla" Margin="502,61,133,90" Grid.Row="1"/>
-        <TextBox x:Name="txtVanillaFilled" Text="0" TextWrapping="Wrap" IsReadOnly="True" Margin="181,10,568,234" Grid.Row="1" RenderTransformOrigin="2.392,1.555"/>
-        <GroupBox x:Name="gbSale" Header="Current Sale" FontWeight="Bold" Margin="374,52,-288,248" Grid.RowSpan="2">
-            <Canvas Margin="426,-126,-426,126">
-                <Label x:Name="lblQuantity" Content="Quantity"/>
-                <TextBox x:Name="txtQuantity" Text="0" TextWrapping="Wrap" Width="120" Canvas.Left="116" Canvas.Top="-9"/>
-                <Label x:Name="lblType" Content="Type" Canvas.Left="60" Canvas.Top="-47"/>
-                <ComboBox x:Name="cmbType" Width="120" Canvas.Left="19" Canvas.Top="81">
-                    <Label x:Name="lblPrice" Content="Price"/>
-                    <TextBox x:Name="txtPrice" Text="0" TextWrapping="Wrap" Width="120" IsReadOnly="True"/>
-                    <ListBox x:Name="lstSale">
-                        
-                    </ListBox>
-                    <Label x:Name="lblTotal" Content="Total" FontWeight="Bold"/>
-                    <TextBox x:Name="txtTotal" Text="0" TextWrapping="Wrap" Width="120" IsReadOnly="True"/>
-                    <Button x:Name="btnAddToSale" Content="Add To Sale"/>
-                    <Button x:Name="btnRemoveItem" Content="Remove Item"/>
-                    <Button x:Name="btnCheckOut" Content="CheckOut" FontWeight="Bold"/>
-                </ComboBox>
-            </Canvas>
-        </GroupBox>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="791*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblTitle" Content="Doughnuts - Bake &amp; Sale" FontSize="24" FontWeight="Bold" Margin="228,24,257,359" Grid.Column="1"/>
+        <GroupBox x:Name="gbRaised" Header="Raised" FontWeight="Bold" Margin="127,99,446,188" Grid.Column="1"/>
+        <GroupBox x:Name="gbFilled" Header="Filled" FontWeight="Bold" Margin="397,80,108,175" Grid.Column="1"/>
+        <Label x:Name="lblGlazedRaised" Content="Glazed" Margin="158,138,566,265" Grid.Column="1"/>
+        <TextBox x:Name="txtGlazedRaised" Text="0" TextWrapping="Wrap" IsReadOnly="True" Margin="256,142,475,269" Grid.Column="1"/>
+        <Label x:Name="lblSugarRaised" Content="Sugar" Margin="158,188,566,217" Grid.Column="1"/>
+        <TextBox x:Name="txtSugarRaised" Text="0" TextWrapping="Wrap" IsReadOnly="True" Margin="256,191,475,220" Grid.Column="1"/>
+        <Label x:Name="lblLemonFilled" Content="Lemon" Margin="415,124,324,280" Grid.Column="1"/>
+        <TextBox x:Name="txtLemonFilled" Text="0" TextWrapping="Wrap" IsReadOnly="True" Margin="587,127,144,283" Grid.Column="1"/>
+        <Label x:Name="lblChocolateFilled" Content="Chocolate" Margin="415,173,309,231" Grid.Column="1"/>
+        <TextBox x:Name="txtChocolateFilled" Text="0" TextWrapping="Wrap" IsReadOnly="True" Margin="587,173,144,237" Grid.Column="1"/>
+        <Label x:Name="lblVanillaFilled" Content="Vanilla" Margin="415,217,294,188" Grid.Column="1"/>
+        <TextBox x:Name="txtVanillaFilled" Text="0" TextWrapping="Wrap" IsReadOnly="True" Margin="587,220,144,191" Grid.Column="1"/>
+        <GroupBox x:Name="gbSale" Header="Current Sale" FontWeight="Bold" Margin="40,264,28,10" Grid.Column="1">
 
+
+        </GroupBox>
+        <Label x:Name="lblQuantity" Content="Quantity" Margin="59,286,671,123" Grid.Column="1"/>
+        <TextBox x:Name="txtQuantity" Text="0" TextWrapping="Wrap" Height="24" Margin="139,287,613,123" Grid.Column="1" KeyUp="txtQuantity_KeyPress"/>
+        <Label x:Name="lblType" Content="Type" Margin="195,286,204,119" Height="29" Grid.Column="1"/>
+        <ComboBox x:Name="cmbType" Margin="251,288,353,121" Grid.Column="1"/>
+        <Label x:Name="lblPrice" Content="Price" Margin="447,286,278,123" Grid.Column="1"/>
+        <TextBox x:Name="txtPrice" Text="0" TextWrapping="Wrap" IsReadOnly="True" Margin="495,286,218,123" Grid.Column="1"/>
+        <ListBox x:Name="ItsSale" Margin="59,320,218,55" Grid.Column="1"/>
+        <Label x:Name="lblTotal" Content="Total" FontWeight="Bold" Margin="391,384,353,22" Grid.Column="1"/>
+        <TextBox x:Name="txtTotal" Text="0" TextWrapping="Wrap" IsReadOnly="True" Margin="438,387,218,22" RenderTransformOrigin="0.769,0.753" Grid.Column="1"/>
+        <Button x:Name="btnAddToSale" Content="Add To Sale" Margin="646,320,44,88" Grid.Column="1"/>
+        <Button x:Name="btnRemoveItem" Content="Remove Item" Margin="646,353,44,55" Grid.Column="1"/>
+        <Button x:Name="btnCheckOut" Content="Check Out" FontWeight="Bold" Margin="646,386,44,21" Grid.Column="1"/>
+        <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top"
+              Width="130" Margin="0,26,0,0">
+            <MenuItem Header="File" Width="110">
+                <MenuItem Header="Exit" Click="exitToolStripMenuItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Doughnuts" Click="MenuItem_Click_1">
+                <MenuItem Header="Make">
+                    <MenuItem Header="Raised">
+                        <MenuItem x:Name="glazedToolStripMenuItem" Header="Glazed" Click="glazedToolStripMenuItem_Click"/>
+                        <MenuItem x:Name="sugarToolStripMenuItem" Header="Sugar" Click="sugarToolStripMenuItem_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="Filled"/>
+                </MenuItem>
+                <MenuItem x:Name="mnuStop" Header="Stop" Click="stopToolStripMenuItem_Click" />
+            </MenuItem>
+            
+        </Menu>
     </Grid>
 </Window>
