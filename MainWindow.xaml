@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Pascu_Serban_Lab2"
         mc:Ignorable="d"
         Title="Virtual Doughnuts Factory" Height="450" Width="800" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Loaded="frmMain_Loaded">
-    <Grid>
+    <Grid MenuItem.Click="FilledItemsShow_Click">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="9*"/>
             <ColumnDefinition Width="791*"/>
@@ -31,31 +31,35 @@
         <Label x:Name="lblQuantity" Content="Quantity" Margin="59,286,671,123" Grid.Column="1"/>
         <TextBox x:Name="txtQuantity" Text="0" TextWrapping="Wrap" Height="24" Margin="139,287,613,123" Grid.Column="1" KeyUp="txtQuantity_KeyPress"/>
         <Label x:Name="lblType" Content="Type" Margin="195,286,204,119" Height="29" Grid.Column="1"/>
-        <ComboBox x:Name="cmbType" Margin="251,288,353,121" Grid.Column="1"/>
+        <ComboBox x:Name="cmbType" Margin="251,288,353,121" Grid.Column="1" SelectionChanged="cmbType_SelectionChanged"/>
         <Label x:Name="lblPrice" Content="Price" Margin="447,286,278,123" Grid.Column="1"/>
         <TextBox x:Name="txtPrice" Text="0" TextWrapping="Wrap" IsReadOnly="True" Margin="495,286,218,123" Grid.Column="1"/>
-        <ListBox x:Name="ItsSale" Margin="59,320,218,55" Grid.Column="1"/>
+        <ListBox x:Name="lstSale" Margin="59,320,218,55" Grid.Column="1"/>
         <Label x:Name="lblTotal" Content="Total" FontWeight="Bold" Margin="391,384,353,22" Grid.Column="1"/>
         <TextBox x:Name="txtTotal" Text="0" TextWrapping="Wrap" IsReadOnly="True" Margin="438,387,218,22" RenderTransformOrigin="0.769,0.753" Grid.Column="1"/>
-        <Button x:Name="btnAddToSale" Content="Add To Sale" Margin="646,320,44,88" Grid.Column="1"/>
-        <Button x:Name="btnRemoveItem" Content="Remove Item" Margin="646,353,44,55" Grid.Column="1"/>
-        <Button x:Name="btnCheckOut" Content="Check Out" FontWeight="Bold" Margin="646,386,44,21" Grid.Column="1"/>
-        <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top"
-              Width="130" Margin="0,26,0,0">
+        <Button x:Name="btnAddToSale" Content="Add To Sale" Margin="646,320,44,88" Grid.Column="1" Click="btnAdd_Click"/>
+        <Button x:Name="btnRemoveItem" Content="Remove Item" Margin="646,353,44,55" Grid.Column="1" Click="btnRemoveItem_Click"/>
+        <Button x:Name="btnCheckOut" Content="Check Out" FontWeight="Bold" Margin="646,386,44,21" Grid.Column="1" Click="btnCheckOut_Click"/>
+        <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="65" VerticalAlignment="Top"
+              Width="149" Margin="15,9,0,0" Grid.Column="1">
             <MenuItem Header="File" Width="110">
                 <MenuItem Header="Exit" Click="exitToolStripMenuItem_Click"/>
             </MenuItem>
-            <MenuItem Header="_Doughnuts" Click="MenuItem_Click_1">
+            <MenuItem Header="_Doughnuts">
                 <MenuItem Header="Make">
                     <MenuItem Header="Raised">
                         <MenuItem x:Name="glazedToolStripMenuItem" Header="Glazed" Click="glazedToolStripMenuItem_Click"/>
                         <MenuItem x:Name="sugarToolStripMenuItem" Header="Sugar" Click="sugarToolStripMenuItem_Click"/>
                     </MenuItem>
-                    <MenuItem Header="Filled"/>
+                    <MenuItem Header="Filled" Click="FilledItems_Click">
+                        <MenuItem x:Name="lemonFilledStripMenuItem" IsCheckable="True"/>
+                        <MenuItem x:Name="chocolateFilledMenuItem" IsCheckable="True"/>
+                        <MenuItem x:Name="vanillaFilledMenuItem" IsCheckable="True"/>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem x:Name="mnuStop" Header="Stop" Click="stopToolStripMenuItem_Click" />
             </MenuItem>
-            
+
         </Menu>
     </Grid>
 </Window>
